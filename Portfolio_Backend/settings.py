@@ -15,8 +15,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-change-me-in-producti
 # DEBUG: True only in development
 DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS','portfolio-backend-fda8.onrender.com','localhost 127.0.0.1').split()
-# Example Render domain will be added automatically via env variable later
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'portfolio-backend-fda8.onrender.com,localhost,127.0.0.1').split(',')# Example Render domain will be added automatically via env variable later
 
 # Application definition
 INSTALLED_APPS = [
