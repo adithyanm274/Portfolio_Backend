@@ -84,7 +84,8 @@ CORS_ALLOWED_ORIGINS = [
     origin.strip()
     for origin in os.environ.get('CORS_ORIGINS', 'http://localhost:3000').split(',')
     if origin.strip()
-]# Later you will set CORS_ORIGINS env var on Render to your Vercel URL
+]
+# Later you will set CORS_ORIGINS env var on Render to your Vercel URL
 CORS_ALLOW_CREDENTIALS = True
 
 # ===== EMAIL SETTINGS (Keep Gmail) =====
