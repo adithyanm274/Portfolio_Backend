@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',  # WhiteNoise for static
     # Your app
     'contact',
+    "anymail",
 ]
 
 MIDDLEWARE = [
@@ -89,12 +90,13 @@ CORS_ALLOWED_ORIGINS = [
 CORS_ALLOW_CREDENTIALS = True
 
 # ===== EMAIL SETTINGS (Keep Gmail) =====
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
+EMAIL_BACKEND = "anymail.backends.resend.EmailBackend"
+ANYMAIL = {
+ "RESEND_API_KEY": os.environ.get("RESEND_API_KEY"),
+}
+# Set a default from address (must be a verified domain in Resend, or the testing one)
+DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL", "Portfolio Contact <onboarding@resend.dev>")
+SERVER_EMAIL = DEFAULT_FROM_EMAIL
 
 # ===== REMAINING SETTINGS (unchanged) =====
 AUTH_PASSWORD_VALIDATORS = [
@@ -120,4 +122,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # EMAIL_HOST_USER = 'adithyan.m.2742001@gmail.com'      # 🔁 Replace with your Gmail address
 # EMAIL_HOST_PASSWORD = 'lwci esyo wdqf aaqh'     # 🔁 Replace with an App Password (see note below)
 
-# HW8NE2eW6EIrouH2
+# re_bkhFzRaU_FTdJDCLJJDvpqJJ8P8LaFwaN
