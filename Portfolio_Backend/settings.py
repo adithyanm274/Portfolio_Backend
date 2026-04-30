@@ -80,8 +80,11 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # ===== CORS =====
-CORS_ALLOWED_ORIGINS = os.environ.get('CORS_ORIGINS', 'http://localhost:3000').split()
-# Later you will set CORS_ORIGINS env var on Render to your Vercel URL
+CORS_ALLOWED_ORIGINS = [
+    origin.strip()
+    for origin in os.environ.get('CORS_ORIGINS', 'http://localhost:3000').split(',')
+    if origin.strip()
+]# Later you will set CORS_ORIGINS env var on Render to your Vercel URL
 CORS_ALLOW_CREDENTIALS = True
 
 # ===== EMAIL SETTINGS (Keep Gmail) =====
@@ -115,3 +118,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # EMAIL_USE_TLS = True
 # EMAIL_HOST_USER = 'adithyan.m.2742001@gmail.com'      # 🔁 Replace with your Gmail address
 # EMAIL_HOST_PASSWORD = 'lwci esyo wdqf aaqh'     # 🔁 Replace with an App Password (see note below)
+
+# HW8NE2eW6EIrouH2
